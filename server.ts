@@ -1,6 +1,10 @@
 import { App } from './app';
+import { ConnectMongo } from './config/dbConfig';
 
 const app = new App()
+const database = new ConnectMongo();
+
+database.connectDB()
 
 app.getApp()
   .listen(process.env.PORT, () =>

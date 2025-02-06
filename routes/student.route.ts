@@ -16,6 +16,27 @@ export class StudentRoute{
         this.studentRouter.get("/", (req: Request, res: Response) => {
             this.studentController.loadStudentLogin(req, res);
           });
+          this.studentRouter.post('/login',(req:Request,res:Response) =>{
+            this.studentController.loginStudent(req,res);
+        });
+          this.studentRouter.get('/register',(req:Request,res:Response) =>{
+            this.studentController.loadRegisterStudent(req,res);
+        })
+        this.studentRouter.post('/register',(req:Request,res:Response)=>{
+            this.studentController.registerStudent(req,res);
+        })
+        this.studentRouter.get('/home',(req:Request,res:Response)=>{
+            this.studentController.loadHome(req,res);
+        })
+        this.studentRouter.get('/logOut',(req:Request,res:Response)=>{
+            this.studentController.logOut(req,res)
+        })
+        this.studentRouter.get('/editUser',(req:Request,res:Response)=>{
+            this.studentController.LoadEditUser(req,res)
+        })
+        this.studentRouter.post('/editUser',(req:Request,res:Response)=>{
+            this.studentController.editUser(req,res)
+        })
     }
 
 
