@@ -1,0 +1,5 @@
+# Tell Linguist to prioritize TypeScript
+*.ts linguist-detectable=true
+
+# Deprioritize EJS files
+*.ejs linguist-detectable=false
