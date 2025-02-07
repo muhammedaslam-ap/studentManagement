@@ -2,6 +2,7 @@ import { IstudentService } from "../interfaces/studentServiceInterface";
 import { Istudent } from "../interfaces/studentModelInterface";
 import { Request, Response } from "express";
 import { promises } from "dns";
+import { error } from "console";
 
 export class StudentController{
     private studentServices:IstudentService;
@@ -93,9 +94,11 @@ export class StudentController{
 
       if(req.session.student){
        req.session.student = null
-       return res.redirect('/')
+       req.flash('error_msg','logout success')
+       res.redirect('/')
+    }else{
+      throw error
     }
-
     } catch (error) {
       console.log(error)
     }

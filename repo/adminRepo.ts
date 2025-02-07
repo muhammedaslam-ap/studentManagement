@@ -17,13 +17,13 @@ export class AdminRepository implements IadminRepository{
     async findStudentByEmail(email: string): Promise<Istudent | null> {
         return await Student.findOne({email});
     }
-    async edit(email: string, name: string, clas: number, roleno: number): Promise<Istudent | null> {
+    async edit(email: string, name: string, clas: number, roll_no: number): Promise<Istudent | null> {
         return await Student.findOneAndUpdate(
             {email},
             {
                 name:name,
                 class:clas,
-                roleno:roleno
+                roll_no:roll_no
             },
             {new : true}
         );

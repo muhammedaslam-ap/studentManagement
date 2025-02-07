@@ -2,6 +2,7 @@ import { Istudent } from "../interfaces/studentModelInterface";
 import { Iadmin } from "../interfaces/adminModelInterface";
 import { Response, Request } from "express";
 import { IadminService } from "../interfaces/adminServiceInterface";
+import { error } from "console";
 
 export class AdminController {
   private adminServices: IadminService;
@@ -76,10 +77,10 @@ export class AdminController {
 
         if (result) {
           req.flash("success_msg", "updated sucessfully ");
-          res.redirect("/admin/home");
+          res.redirect("/admin/dashboard");
         } else {
           req.flash("error_msg", "data updation failed");
-          res.redirect("/admin/home");
+          res.redirect("/admin/dashboard");
         }
       } else {
         req.flash("error_msg", "please login session expired ");
@@ -104,6 +105,40 @@ export class AdminController {
       } else {
         req.flash("error_msg", "please login session expired ");
         res.redirect("/admin");
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async deleteUser(req:Request,res:Response):Promise<void>{
+    try {
+      if(req.session.admin){
+        const email: string = req.params.id;
+        const deleteUser = await this.adminServices.delete(email)
+        if (deleteUser) {
+          req.flash('success_msg','User deleted successfully')
+          res.redirect("/admin/dashboard");
+        } else {
+          req.flash("error_msg", "cant fetch data from database ");
+          res.redirect("/admin/dashboard");
+        }
+      }else{
+        throw error
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async logOut(req:Request,res:Response):Promise <void>{
+    try {
+      if(req.session.admin){
+        req.session.admin = null
+        req.flash('error_msg','logout success')
+        res.redirect('/admin')
+      }else{
+        throw error
       }
     } catch (error) {
       console.log(error)

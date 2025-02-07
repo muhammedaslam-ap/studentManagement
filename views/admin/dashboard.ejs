@@ -110,7 +110,7 @@
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `/admin/delete/${id}`;
+                    window.location.href = `/admin/deleteUser/${id}`;
                 }
             });
         }
@@ -126,7 +126,7 @@
                 confirmButtonText: "Yes, log out!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `/admin/logout`;
+                    window.location.href = `/admin/logOut`;
                 }
             });
         }

@@ -1,4 +1,4 @@
-import bcrypt, { compare } from 'bcrypt'
+import bcrypt , { compare } from 'bcrypt'
 
 export class BcryptPass{
 

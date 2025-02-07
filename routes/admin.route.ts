@@ -14,13 +14,10 @@ export class AdminRoute {
   private setRoutes() {
     this.adminRouter.get("/", (req: Request, res: Response) => {
         this.adminController.loadAdminLogin(req, res);
-      });
-
-
+    });
     this.adminRouter.post('/verifyAdmin',(req:Request,res:Response)=>{
       this.adminController.verifyAdmin(req,res);
     })
-    
     this.adminRouter.get("/dashboard",(req:Request,res:Response)=>{
       this.adminController.loadDashboard(req,res)
     })
@@ -29,6 +26,12 @@ export class AdminRoute {
     })
     this.adminRouter.get('/editUser/:id',(req:Request,res:Response)=>{
       this.adminController.getEditUser(req,res)
+    })
+    this.adminRouter.get('/deleteUser/:id',(req:Request,res:Response)=>{
+      this.adminController.deleteUser(req,res)
+    })
+    this.adminRouter.get('/logOut',(req:Request,res:Response)=>{
+      this.adminController.logOut(req,res)
     })
 
 
