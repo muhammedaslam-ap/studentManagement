@@ -1,5 +1,5 @@
-import { App } from './app';
-import { ConnectMongo } from './config/dbConfig';
+import { App } from '../src/app';
+import { ConnectMongo } from '../src/config/dbConfig';
 
 const app = new App()
 const database = new ConnectMongo();
